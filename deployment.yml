@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: eventarz-zuul
+  name: eventarz-zuul
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eventarz-zuul
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: eventarz-zuul
+    spec:
+      containers:
+        - image: eventarzregistry.azurecr.io/eventarz-zuul:latest
+          name: eventarz-zuul
+          resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: eventarz-zuul
+  name: eventarz-zuul
+spec:
+  ports:
+    - name: 443-443
+      port: 443
+      protocol: TCP
+      targetPort: 443
+  selector:
+    app: eventarz-zuul
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: eventarz-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  defaultBackend:
+    service:
+      name: eventarz-zuul
+      port:
+        number: 443
