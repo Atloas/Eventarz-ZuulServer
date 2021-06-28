@@ -60,6 +60,8 @@ spec:
         paths:
           - path: /
             pathType: Prefix
+            port:
+              number: 443
             backend:
               service:
                 name: eventarz-zuul
