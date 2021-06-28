@@ -53,7 +53,7 @@ spec:
       http:
         paths:
           - path: /(.*)
-            pathType: ApplicationSpecific
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: eventarz-zuul
