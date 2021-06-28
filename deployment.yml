@@ -47,8 +47,12 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
-  defaultBackend:
-    service:
-      name: eventarz-zuul
-      port:
-        number: 443
+  rules:
+  - host: b9f7d10a907f4d009411.southcentralus.aksapp.io
+    https:
+      paths:
+        - backend:
+            serviceName: eventarz-zuul
+            servicePort: 443
+          path: /
+          pathType: Prefix
