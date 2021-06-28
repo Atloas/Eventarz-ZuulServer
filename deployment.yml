@@ -40,22 +40,21 @@ spec:
     app: eventarz-zuul
   type: ClusterIP
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: eventarz-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-    - http:
-      paths:
-        - path: /(.*)
-          pathType: Prefix
-          backend:
-            service:
-              name: eventarz-zuul
-              port:
-                number: 443
+    - host: b9f7d10a907f4d009411.southcentralus.aksapp.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: eventarz-zuul
+                port:
+                  number: 443
