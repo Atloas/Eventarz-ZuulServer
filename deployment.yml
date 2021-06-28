@@ -53,7 +53,9 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: eventarz-zuul
-              servicePort: 443
+            service:
+              name: eventarz-zuul
+              port:
+                number: 443
             path: /(.*)
             pathType: ImplementationSpecific
