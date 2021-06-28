@@ -49,7 +49,7 @@ metadata:
 spec:
   rules:
   - host: b9f7d10a907f4d009411.southcentralus.aksapp.io
-    https:
+    http:
       paths:
         - backend:
             serviceName: eventarz-zuul
