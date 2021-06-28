@@ -46,13 +46,14 @@ metadata:
   name: eventarz-ingress
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
     - host: b9f7d10a907f4d009411.southcentralus.aksapp.io
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /(.*)
+            pathType: ApplicationSpecific
             backend:
               service:
                 name: eventarz-zuul
