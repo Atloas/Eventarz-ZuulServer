@@ -58,8 +58,8 @@ spec:
     - host: eventarz.b9f7d10a907f4d009411.southcentralus.aksapp.io
       http:
         paths:
-          - path: /(.*)
-            pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: eventarz-zuul
