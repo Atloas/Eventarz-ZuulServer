@@ -1,7 +1,7 @@
 spring:
   cloud.loadbalancer.ribbon.enabled: false
   application:
-    name: "eventarz-zuul-proxy"
+    name: "eventarz-zuul"
 
 server:
   use-forward-headers: true
