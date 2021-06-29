@@ -13,6 +13,16 @@ server:
     key-alias: eventarz
     enabled: true
 
+eureka:
+  instance:
+    preferIpAddress: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 ribbon:
   ReadTimeout: 60000
 
