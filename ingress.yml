@@ -3,19 +3,19 @@ kind: Ingress
 metadata:
   name: eventarz-ingress
   annotations:
-    kubernetes.io/ingress.class: addon-http-application-routing
-#    nginx.ingress.kubernetes.io/use-regex: "true"
-#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-#    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
 spec:
   rules:
-    - host: eventarz.b9f7d10a907f4d009411.southcentralus.aksapp.io
-      http:
+    - http:
         paths:
-          - path: /
+          - path: /(.*)
             pathType: Prefix
             backend:
               service:
-                name: eventarz-gateway
+                name: eventarz-zuul
                 port:
-                  number: 8080
+                  number: 8443
