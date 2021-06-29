@@ -4,6 +4,7 @@ spring:
     name: "eventarz-zuul"
 
 server:
+  port: 8443
   use-forward-headers: true
   ssl:
     key-store-type: PKCS12
