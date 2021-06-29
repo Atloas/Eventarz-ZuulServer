@@ -35,8 +35,8 @@ metadata:
   name: eventarz-zuul
 spec:
   ports:
-    - name: 443-8443
-      port: 443
+    - name: 8443-8443
+      port: 8443
       protocol: TCP
       targetPort: 8443
   selector:
