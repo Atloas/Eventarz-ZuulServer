@@ -41,7 +41,4 @@ zuul:
 
 logging:
   level:
-    org:
-      springframework:
-        cloud:
-          netflix: debug
+    org.springframework.cloud.netflix: DEBUG
